@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Compression</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
+            background-image: linear-gradient(to bottom right, #f8f8f8, #e0e0e0);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 400px;
+            max-height: 400px;
+            margin: 0 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-container h2 {
+            text-align: center;
+            color: #555;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Compression</h1>
+    <div class="image-container">
+        <div>
+            <h2>Original Image</h2>
+            <img src="{{ url_for('static', filename='original_image.jpg') }}" alt="Original Image">
+        </div>
+        <div>
+            <h2>Compressed Image</h2>
+            <img src="data:image/jpeg;base64,{{ compressed_image_data }}" alt="Compressed Image">
+        </div>
+    </div>
+    <div class="button-container">
+        <a href="{{ url_for('home') }}">Upload another image</a>
+        <a href="{{ url_for('download_compressed_image') }}" download="compressed_image.jpg">Download Compressed Image</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+
+    </div>
+</body>
+</html>
